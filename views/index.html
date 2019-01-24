@@ -1,11 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <title>Magda's Burgers</title>
-        <meta charset="utf-8"/>
-    </head>
-    <body>
-
-    </body>
-</html>
+  <head>
+    <title>BurgerHeaven</title>
+    <meta charset="utf-8"/>
+  </head>
+  <body>
+    <main>
+      <h1>Welcome to BurgerHeaven Online </h1>
+      <section>
+        <h3>Select burger </h3>
+        <p>This is where you execute burger selection</p>
+        <table>
+          <thead>
+            <tr>
+              <th>Chicken Burger</th>
+              <th>BBQ Burger</th>
+              <th>Original Burger</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><img src="https://www.max.se/ImageVaultFiles/id_744/cf_22/Burgers-Chickenburger-Classic.jpg" alt="Hamburgare" title="Hamburger" width = "300"></td>
+              <td><img src="https://www.max.se/ImageVaultFiles/id_2852/cf_22/Burgers-GDL-BBQ-2017.jpg" alt="Hamburgare" title="Hamburger" width = "300"></td>
+              <td><img src="https://www.max.se/ImageVaultFiles/id_715/cf_22/Burgers-Max-Original.jpg" alt="Hamburgare" title="Hamburger" width = "300"></td>
+            </tr>
+            <tr>
+              <td> <ul>
+                  <li> 750 kcal </li>
+                  <li> Contains lactos </li>
+                  <li> Contains gluten </li>
+              </ul></td>
+              <td> <ul>
+                  <li> 900 kcal </li>
+                  <li> Contains lactos </li>
+              </ul></td>
+              <td> <ul>
+                  <li> 600 kcal </li>
+                  <li> Contains lactos </li>
+                  <li> Contains gluten </li>
+              </ul></td>
+            </tr>
+          </tbody>
+        </table>
+        
+      </section>
+      <section>
+        <h3>Customer information</h3>
+        
+        <p>This is where you provide necessary information</p>
+        <h4>Delivery information:</h4>
+      </section>
+      <section id="contact">
+        <form>
+          <p>
+            <label for="name">Full name</label><br>
+            <input type="text" id="name" name="fn" required="required" placeholder="First- and Last name">
+          </p>
+          <p>
+            <label for="email"> Email</label><br>
+            <input type="email" id="email" name="em" required="required" placeholder="E-mail address">
+          </p>
+          <p>
+            <label for="street"> Street</label><br>
+            <input type="text" id="street" name="street" required="required" placeholder="Street name">
+          </p>
+          <p>
+            <label for="house"> House </label><br>
+            <input type="text" id="house" name="house" required="required" placeholder="House number">
+          </p>
+          <p>
+            <label for="payment">Payment options</label><br>
+            <select id="payment" name="payment">
+              <option>Card payment</option>
+              <option>Debit card</option>
+              <option>Online bank payments</option>
+              <option>Bank transfers</option>
+            </select>
+          </p>
+          <p>
+            <lable for="gender"> Gender</lable><br>
+            <input type="radio" name="gender" value="male"> Male <br>
+            <input type="radio" name="gender" value="female"> Female <br>
+            <input type="radio" name="gender" value="Non-binary"> Non-binary<br>
+            <input type="radio" name="gender" value="Undisclosed" checked="checked"> Undisclosed<br>
+          </p>
           
+        </form>
+      </section>
+      <button type="submit"><img src="https://i.pinimg.com/originals/21/9b/5c/219b5c6b4a1ea5275310e30efd29ba46.jpg" width="30"> Send Info</button>
+    </main>
+    <hr>
+    <footer> &copy 2019 BurgerHeaven AB. </footer>
+  </body> 
+</html>
+
