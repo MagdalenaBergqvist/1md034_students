@@ -62,26 +62,20 @@ button:hover {
 
 .table {
     display:grid;
-    grid-template-columns: 300px 300px 300px;
     grid-gap: 5px;
     text-align: center;
     
 }
 
-.cb-text {
-    grid-column: 1;
+.burgerBox {
     grid-row: 1;
-    font-weight: bold;
 }
 
-.bb-text {
-    grid-column: 2;
-    grid-row: 1;
-    font-weight: bold;
+.burgerPic img {
+    width: 100%;
 }
 
-.ob-text {
-    grid-column: 3;
-    grid-row: 1;
-    font-weight: bold;
+.burgerInfo {
+    height: 25.8%;
+    width: auto;
 }

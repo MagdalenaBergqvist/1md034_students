@@ -2,6 +2,10 @@
 <html lang="en">
   <head>
     <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script type="text/javascript" src="js/menu.js"></script>
+    <script src="js/js_script.js" defer></script>
+    <script src="https://vuejs.org/js/vue.js"></script>
+    <script src="js/vue_script.js" defer></script>
     <title>BurgerHeaven</title>
     <meta charset="utf-8"/>
   </head>
@@ -9,41 +13,29 @@
     <main>
       <section id="header">
         <img id="bar" src="https://static.thatsup.co/content/img/article/17/dec/östermalms-bästa-barer.jpg" title="Bar">
-         <h1 id="welcome">Welcome to BurgerHeaven Online </h1>
+        <h1 id="welcome">Welcome to BurgerHeaven Online </h1>
       </section>
-      <section id="first">
-        <h3>Select burger </h3>
-        <p>This is where you execute burger selection</p>
-        <div class="table">
-              <div class="cb-text">Chicken Burger</div>
-              <div class="bb-text">BBQ Burger</div>
-              <div class="ob-text">Original Burger</div>
-              <div class="cb-pic"><img src="https://www.max.se/ImageVaultFiles/id_744/cf_22/Burgers-Chickenburger-Classic.jpg" alt="Hamburgare" title="Hamburger" width = "300"></div>
-              <div class="bb-pic"><img src="https://www.max.se/ImageVaultFiles/id_2852/cf_22/Burgers-GDL-BBQ-2017.jpg" alt="Hamburgare" title="Hamburger" width = "300"></div>
-              <div class="ob-pic"><img src="https://www.max.se/ImageVaultFiles/id_715/cf_22/Burgers-Max-Original.jpg" alt="Hamburgare" title="Hamburger" width = "300"></div>
-              <div class="cb-info"> <ul>
-                  <li> 750 kcal </li>
-                  <li> Contains <span id="allergy">lactos</span> </li>
-                  <li> Contains <span id="allergy">gluten </span></li>
-              </ul></div>
-              <div class="bb-info"> <ul>
-                  <li> 900 kcal </li>
-                  <li> Contains <span id="allergy">lactos </span></li>
-              </ul></div>
-              <div class="ob-info"> <ul>
-                  <li> 600 kcal </li>
-                  <li> Contains <span id="allergy">lactos </span></li>
-                  <li> Contains <span id="allergy">gluten </span></li>
-              </ul></div>
-        </div>
-        
+      <section v-bind:title="selectBurger" id="first">
+        <h3>{{selectB}} </h3>
+        <p>{{introtext}}</p>
+        <div class="table" >
+          <div class="burgerBox" v-for="burger in menuArray">      
+            <div class="burgerText" > {{burger.name}}</div>
+            <div class="burgerPic"><img v-bind:src="burger.img" alt="Hamburgare" title="Hamburger" ></div>
+            <div class="burgerInfo">
+              <ul>
+                <li> {{burger.kcal}} kCal </li>
+                <li v-if="burger.containsLactos"> Contains <span id="allergy">Lactos</span> </li>
+                <li v-if="burger.containsGluten"> Contains <span id="allergy">Gluten </span></li>
+              </ul>
+            </div>
+            <input type="checkbox" name="selectedBurger" :value="burger.name"> Select <br> 
+          </div>
       </section>
       <section id="second">
-        <h3>Customer information</h3>
-        
+        <h3>Customer information</h3> 
         <p>This is where you provide necessary information</p>
         <h4>Delivery information:</h4>
-
         <form>
           <p>
             <label for="name">Full name</label><br>
@@ -71,19 +63,23 @@
             </select>
           </p>
           <p>
-            <lable for="gender"> Gender</lable><br>
+            <lable for="gender" id="gender"> Gender</lable><br>
             <input type="radio" name="gender" value="male"> Male <br>
             <input type="radio" name="gender" value="female"> Female <br>
             <input type="radio" name="gender" value="Non-binary"> Non-binary<br>
             <input type="radio" name="gender" value="Undisclosed" checked="checked"> Undisclosed<br>
-          </p>
-          
+          </p> 
         </form>
       </section>
-      <button type="submit"><img src="https://i.pinimg.com/originals/21/9b/5c/219b5c6b4a1ea5275310e30efd29ba46.jpg" width="30"> Send Info</button>
+      <div id="orders">
+        <button type="submit" id="button" v-on:click="markDone"><img src="https://i.pinimg.com/originals/21/9b/5c/219b5c6b4a1ea5275310e30efd29ba46.jpg" width="30"> Send Info</button>
+        <div id="answers">
+          {{output}}
+        </div>
+      </div>
     </main>
     <hr>
     <footer> &copy 2019 BurgerHeaven AB. </footer>
-  </body> 
+  </body>
 </html>
 
