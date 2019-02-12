@@ -10,11 +10,11 @@ var vm = new Vue({
     orders: {},
   },
   created: function () {
-    socket.on('initialize', function (data) {
+      socket.on('initialize', function (data) {
       this.orders = data.orders;
     }.bind(this));
 
-    socket.on('currentQueue', function (data) {
+      socket.on('currentQueue', function (data) {
       this.orders = data.orders;
     }.bind(this));
   }

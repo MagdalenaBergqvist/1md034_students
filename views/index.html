@@ -2,15 +2,19 @@
 <html lang="en">
   <head>
     <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" href="css/deli-very.css">
     <script type="text/javascript" src="js/menu.js"></script>
-    <script src="js/js_script.js" defer></script>
+
+    <script src="/socket.io/socket.io.js" defer></script>
     <script src="https://vuejs.org/js/vue.js"></script>
-    <script src="js/vue_script.js" defer></script>
+        <script src="js/vue_script.js" defer></script>
+
+    <script src="js/js_script.js" defer></script>
     <title>BurgerHeaven</title>
     <meta charset="utf-8"/>
   </head>
   <body>
-    <main>
+    <main id="testss">
       <section id="header">
         <img id="bar" src="https://static.thatsup.co/content/img/article/17/dec/östermalms-bästa-barer.jpg" title="Bar">
         <h1 id="welcome">Welcome to BurgerHeaven Online </h1>
@@ -46,14 +50,6 @@
             <input type="email" id="email" name="em" required="required" placeholder="E-mail address">
           </p>
           <p>
-            <label for="street"> Street</label><br>
-            <input type="text" id="street" name="street" required="required" placeholder="Street name">
-          </p>
-          <p>
-            <label for="house"> House </label><br>
-            <input type="text" id="house" name="house" required="required" placeholder="House number">
-          </p>
-          <p>
             <label for="payment">Payment options</label><br>
             <select id="payment" name="payment">
               <option>Card payment</option>
@@ -62,19 +58,33 @@
               <option>Bank transfers</option>
             </select>
           </p>
+          
           <p>
             <lable for="gender" id="gender"> Gender</lable><br>
             <input type="radio" name="gender" value="male"> Male <br>
             <input type="radio" name="gender" value="female"> Female <br>
             <input type="radio" name="gender" value="Non-binary"> Non-binary<br>
             <input type="radio" name="gender" value="Undisclosed" checked="checked"> Undisclosed<br>
-          </p> 
+          </p>
         </form>
       </section>
-      <div id="orders">
-        <button type="submit" id="button" v-on:click="markDone"><img src="https://i.pinimg.com/originals/21/9b/5c/219b5c6b4a1ea5275310e30efd29ba46.jpg" width="30"> Send Info</button>
+      <div id="testa">
+              <h1> Click in the map! </h1>
+              <a href="/dispatcher" target="_blank">Open dispatcher in new window</a>.
+              <div class="view-box">
+                <div id="dots" v-on:click="displayOrder">
+                  <div 
+                    v-for="order in orders"
+                    v-bind:style="{ left: order.details.x + 'px', top: order.details.y + 'px'}">                   
+                    T
+                  </div>
+                </div>
+              </div>
+      <div id="ordersButton">
+        <button type="submit" id="button" v-on:click="addOrder"><img src="https://i.pinimg.com/originals/21/9b/5c/219b5c6b4a1ea5275310e30efd29ba46.jpg" width="30"> Send Info</button>
         <div id="answers">
           {{output}}
+        </div>
         </div>
       </div>
     </main>
