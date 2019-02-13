@@ -14,7 +14,7 @@
     <meta charset="utf-8"/>
   </head>
   <body>
-    <main id="testss">
+    <main>
       <section id="header">
         <img id="bar" src="https://static.thatsup.co/content/img/article/17/dec/östermalms-bästa-barer.jpg" title="Bar">
         <h1 id="welcome">Welcome to BurgerHeaven Online </h1>
@@ -58,19 +58,7 @@
               <option>Bank transfers</option>
             </select>
           </p>
-          
-          <p>
-            <lable for="gender" id="gender"> Gender</lable><br>
-            <input type="radio" name="gender" value="male"> Male <br>
-            <input type="radio" name="gender" value="female"> Female <br>
-            <input type="radio" name="gender" value="Non-binary"> Non-binary<br>
-            <input type="radio" name="gender" value="Undisclosed" checked="checked"> Undisclosed<br>
-          </p>
-        </form>
-      </section>
-      <div id="testa">
-              <h1> Click in the map! </h1>
-              <a href="/dispatcher" target="_blank">Open dispatcher in new window</a>.
+          <a> Please indicate point of delivery on the map: </a>
               <div class="view-box">
                 <div id="dots" v-on:click="displayOrder">
                   <div 
@@ -80,13 +68,29 @@
                   </div>
                 </div>
               </div>
+               <a href="/dispatcher" target="_blank" style="font-size:70%; font-style:italic">Open dispatcher in new window</a>.<br>
+          <p>
+            <label for="gender" id="gender"> Gender</lable><br>
+            <input type="radio" name="gender" value="male"> Male <br>
+            <input type="radio" name="gender" value="female"> Female <br>
+            <input type="radio" name="gender" value="Non-binary"> Non-binary<br>
+            <input type="radio" name="gender" value="Undisclosed" checked="checked"> Undisclosed<br>
+          </p>
+        </form>
       <div id="ordersButton">
         <button type="submit" id="button" v-on:click="addOrder"><img src="https://i.pinimg.com/originals/21/9b/5c/219b5c6b4a1ea5275310e30efd29ba46.jpg" width="30"> Send Info</button>
         <div id="answers">
+          <h3>
+            Customer details
+          </h3>
           {{output}}
+          <h3>
+            Burgers selected
+           </h3>
+          {{burgers}}
         </div>
         </div>
-      </div>
+      </section>
     </main>
     <hr>
     <footer> &copy 2019 BurgerHeaven AB. </footer>

@@ -41,9 +41,6 @@ function Data() {
 */
 Data.prototype.addOrder = function (order) {
     //Store the order in an "associative array" with orderId as key
-    console.log("------");
-    console.log(order);
-    console.log("id == " +order.orderId);
     this.orders[order.orderId] = order;
     //this.orders[0] = orders;
 
@@ -62,8 +59,6 @@ io.on('connection', function (socket) {
   socket.on('addOrder', function (order) {
     data.addOrder(order);
       // send updated info to all connected clients, note the use of io instead of socket
-      console.log("hjälp");
-      console.log(data.getAllOrders())
     io.emit('currentQueue', { orders: data.getAllOrders() });
   });
 

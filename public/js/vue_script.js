@@ -41,44 +41,56 @@ function answer() {
 }
 
 var buttonClick = new Vue ({
-    el: '#testa',
+    el: '#second',
     data: {
         output: null,
-        orders: {}
+        orders: {},
+        orderId: -1,
+        burgers: null,
     },
     methods: {
         markDone: function () {
             var arr = answer();
-            var string = "Name: " + arr[0] + ", Email: " + arr[1] + ", Payment option: " + arr[2] + ", Gender: " + arr[3] + ", Burgers selected: ";
+            var burgers = [];
+            var string = "Name: " + arr[0] + ", Email: " + arr[1] + ", Payment option: " + arr[2] + ", Gender: " + arr[3];
             if (arr.length==4) {
-                string = string + "none";
+                burgers = burgers + "None";
             }
             else {
                 for (i = 4; i <= arr.length-2; i++) {
-                    string  = string + arr[i] +", ";
+                    burgers  = burgers + arr[i] +", ";
                 }
-                string = string + arr[i] + ".";
+                burgers = burgers + arr[i] + ".";
             }
             
             this.output = string;
+            this.burgers = burgers;
         },
-         getNext: function () {
-      var lastOrder = Object.keys(this.orders).reduce(function (last, next) {
-        return Math.max(last, next);
-      }, 0);
-             return lastOrder + 1;
-    },
         addOrder: function (event) {
-             console.log(this.orders[0]);
+            if (this.orders[0] == undefined) {
+                
+            }
+            else {
+            this.orderId = this.orderId + 1;
+             var arr = answer();
+            this.orderInfo = [arr[0], arr[1], arr[2], arr[3]];
+            var string = [];
+             if (arr.length==4) {
+                string = [];
+            }
+            else {
+                var x = 0; 
+                for (i = 4; i <= arr.length-1; i++) {
+                    string[x]  = arr[i];
+                    x++;
+                }
+            }
+            this.orders[0].orderItems = string;
+            this.orders[0].orderId = this.orderId;
+            this.orders[0].orderInfo = this.orderInfo;
             socket.emit('addOrder', this.orders[0] );
             this.markDone();
-   /*var offset = {x: event.currentTarget.getBoundingClientRect().left,
-                    y: event.currentTarget.getBoundingClientRect().top};
-        socket.emit("addOrder", { orderId: this.getNext(),
-                                details: { x: event.clientX - 10 - offset.x,
-                                           y: event.clientY - 10 - offset.y },
-                                orderItems: ["Beans", "Curry"]
-                                })*/
+            }
     },
          displayOrder: function (event) {
           var offset = {x: event.currentTarget.getBoundingClientRect().left,
@@ -86,7 +98,8 @@ var buttonClick = new Vue ({
              Vue.set(this.orders,0,  {orderId: 0, 
                                 details: { x: event.clientX - 10 - offset.x,
                                            y: event.clientY - 10 - offset.y },
-                               orderItems: ["beans", "curry"]
+                                      orderItems: [],
+                                      orderInfo: []
                                      });
          }
     }
